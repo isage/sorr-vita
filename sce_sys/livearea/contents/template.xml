@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<livearea style="ad0" format-ver="01.00" content-rev="1">
+	<livearea-background>
+		<image>bg.png</image>
+	</livearea-background>
+	<frame id="frame1" >
+		<liveitem default="on">
+			<text line-break="on" line-space="3" pre-br="on"  text-valign="center" valign="center" word-scroll="off" word-wrap="on" y="0">
+				<str bold="on" color="#f0f0f0" emboss="on" oblique="off" shadow="on" size="32.000000" underline="off">START</str>
+			</text>
+			<target>psla:</target>
+		</liveitem>
+	</frame>
+</livearea>

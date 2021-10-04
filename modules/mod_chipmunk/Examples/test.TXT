@@ -1,0 +1,172 @@
+test00		Pelota rebotando
+                	addInanimateShape
+                	lphysics.mass
+                        lphysics.ELASTICITY
+                        lphysics.friction
+                        lphysics.ShapeType
+                        forceCreateBody()
+                        lphysics.inertia
+                        GETOPTIMALINERTIA()
+                        INTERSECTSBB(id2)       --> colisión
+                        muerte de procesos con física
+
+
+test01		Cuerpos sin gravedad estilo bomberman, Empujar objetos, Movimiento de personaje y Traspasar objetos.
+                        gphysics.bias_coef
+                        gphysics.damping
+                        lphysics.static
+                        lphysics.group
+                        TYPE_CONVEX_POLYGON
+                        cpMomentForCircle()
+                        TYPE_CIRCLE
+                        CP_NO_GROUP
+                        TYPE_box
+
+test02		Slew, cuerpos estáticos y Pirámide de dominós.
+                        gphysics.iterations
+                        gphysics.collision_slop
+                        gphysics.sleepTimeThreshold
+                        cpvadd()
+                        Slew()
+
+test03		Polígonos definidos por arreglo y lphysics.group
+                  lphysics.params
+                  TYPE_CONVEX_POLYGON
+
+test04		Movimiento con el ratón, Joint, Colisión puntual, gphysics.interval, y uso de boundingbox (intersecciones y envoltura).
+                  gphysics.SLEEPTIMETHRESHOLD
+                  infinityf()
+                  cpBBIntersects
+                  cpBBmerge
+                  DefConstraintF
+                  CP_C_MAXFORCE
+                  CP_C_BIASCOEF
+                  RemoveConstraint
+                  ShapeCacheBB
+                  cpBB
+
+test05		Varias pelotas que se pueden mover, piso formado por línea y función para obtener los shapes y constraints de un proceso, gphysics.bias_coef.
+                  COLLISIONHANDLERNEW
+                  SpaceSegmentQueryFirst
+                  SegmentQueryHitPoint
+                  SegmentQueryHitDist
+                  GETCOLLISIONINFO
+                  GETCONSTRAINTS
+                  GETSHAPES
+
+test06		phresolution, pin, joint, motor y resortes.
+                  addPivotJoint
+                  addSimpleMotor
+                  addPinJoint
+                  addDampedRotarySpring
+                  infinityf
+
+test07		Física de juego tipo plataformas, péndulos, objetos con centro distinto del (0,0), Movimiento por fuerzas
+                  cpContactPointSet
+                  cpvperp
+                  cpvmult
+                  cpvadd
+                  DEFBODYP
+                  CP_C_V
+                  GETCOLLISIONINFO
+                  cpfclamp
+
+test08		Eliminar zona y eliminar todos los cuerpos físicos. Constraints
+                  cleanSpace
+                  WORLD2LOCAL
+                  RemoveConstraint
+                  cpMomentForPoly
+                  addPinJoint
+                  addSlideJoint
+                  addPivotJoint
+                  addGrooveJoint
+                  addDampedSpring
+                  addDampedRotarySpring
+                  addRotaryLimitJoint
+                  addRatchetJoint
+                  addSimpleMotor
+                  DefShapeI
+                  CP_C_LAYERS
+                  NOT_GRABABLE_MASK
+                  addInanimateShape
+                  COLLISIONHANDLERNEW
+                  
+test09		Uso de constraints, Modificación de propiedades de constraints, Procesos con más de un shape, Simulación de máquina TheoJansen.
+                  cpMomentForSegment
+                  ADDPIVOTJOINT2
+                  ADDCIRCLESHAPE
+                  defShapef
+                  ADDPINJOINT
+                  SETPINJOINTPROPERTIES
+                  CP_C_DIST
+                  DefShapeI
+                  CP_C_LAYERS
+                  NOT_GRABABLE_MASK
+                  CP_C_E
+                  CP_C_U
+                  DefShapeF
+                  cpvforangle
+                  CM_PI
+                  ADDSIMPLEMOTOR
+                  SETSIMPLEMOTORPROPERTIES
+                  DEFCONSTRAINTF
+                  CP_C_MAXFORCE
+
+test10		Generación de terrenos mediante .cpt
+                  COLLISIONHANDLERNEW
+                  addInanimateShape
+                  cpMomentForCircle
+                  cpvperp
+                  cpvmult
+                  cpvadd
+                  GETCOLLISIONINFO
+                  cpBodyActivate
+                  cpContactPointSet
+
+test11          Handlers de collision.  Omitir respuesta de cuerpos al colisionar (Útil para juegos de plataformas donde el personaje colisiona con el piso sólo cuando desciende y no cuando asciende (aquí revisaríamos la dirección de la normal de colisión para filtrar las colisiones)).
+                  SPACEADDCOLLISIONHANDLER
+                  SPACEREMOVECOLLISIONHANDLER
+                  Ejemplo de handler presolve, postsolve, separate e inicia.
+
+test12          Simulando objeto que cae en un líquido
+                  addInanimateShape
+                  SPACEADDCOLLISIONHANDLER
+                  GETARBITERPOINT
+                  MODARBITERPROCESSA
+                  ResetForces
+                  ApplyForce
+                  DefBodyP
+                  cpfclamp
+                  lphysics.collisionType
+                  updateVelocity
+
+test13          Lista de cuerpos colgados y destrucción de constraints al superar un umbral en la fuerza aplicada (Destrucción de uniones y resortes)
+                  ADDSLIDEJOINT
+                  DEFCONSTRAINTF
+                  CONSTRAINTSETPOSTSOLVEFUNC
+                  RemoveConstraint
+                  getConstraintFatherA
+                  getConstraintFatherB
+                  CP_C_MAXFORCE
+                  GETCONSTRAINTF
+                  SpaceGetCurrentTimeStep
+                  constraintGetImpulse
+
+test14          Mover un cuerpo y hacer que se vaya frenando con el tiempo
+                  APPLYIMPULSE
+                  gphysics.damping
+
+test15		Simulando una soga
+                  APPLYIMPULSE
+                  addPivotJoint2
+                  WORLD2LOCAL
+
+test17 		simulación de soga.
+
+test16		Creación automática de cuerpos convexos
+                         CALCULATECONVEXBODY
+			ejemplo con uso de size
+
+test18		Creación de cuerpos a partir de gráfico
+
+test19		Simulación y pintado de agua...

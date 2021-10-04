@@ -1,0 +1,37 @@
+***************************************Por hacer****************************************************
+5:14 PM 1/30/2013
+Terminado programación de aproximación poligonal... ahora a probar que funcione bien...
+ejemplo de aproximación poligonal
+forceCreateBody ahora acepta id de proceso como parámetro
+
+***************************************ya hechas****************************************************
+12:13 p.m. 21/11/2011
+-Generación automática de cuerpos convexos.
+-Ejemplo de soga
+-obtención de los vértices del cuerpo convexo de un gráfico test16.
+-Funciones para manejo de arbitros test12-test14
+-Actualizada a la versión Chipmunk-6.0.2
+-Corrección de un bug en la generación de arreglos dinámicos.
+-Descripción de los test completada.
+-Nuevos ejemplos.
+-Soporte para handlers desde bennu para las colisiones de los cuerpos.
+-Destrucción de constraints a partir de la fuerza aplicada (handlers en constraints)
+
+-que los estáticos no modifiquen su masa ni su inercia
+-Pasar la librería a floats
+-limpiar un poco el código para usar los floast y aprovechar compatibilidad con bennu.
+-Función de inercia automática
+-Actualizada y corregida ayuda.
+
+07:42 p.m. 19/04/2011
+-getOptimalInertia corregido
+-Seteo de masa corregido
+-Comentados test, generada lista y nombres cambiados
+
+10:28 p.m. 23/04/2011
+-Test de generación de terreno mediante cpt
+
+
+sin fecha
+- corregido tema de liberación de recursos.
+

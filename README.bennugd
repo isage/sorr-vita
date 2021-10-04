@@ -1,0 +1,4 @@
+This repository contains the source code for bennugd-monolithic.
+
+The source code for this project used to be hosted in Google Code (https://code.google.com/archive/p/bennugd-monolithic/) and has been updated to use SDL-2.0.5, SDL2_mixer-2.0.1 & libpng-1.6.23, so that projects created with it are still uploadable to Google Play.
+

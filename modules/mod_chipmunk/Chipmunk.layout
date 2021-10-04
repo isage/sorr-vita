@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="Arreglos.c" open="1" top="0" tabpos="5">
+		<Cursor position="1816" topLine="39" />
+	</File>
+	<File name="Arreglos.h" open="0" top="0" tabpos="5">
+		<Cursor position="231" topLine="2" />
+	</File>
+	<File name="Constraints.c" open="1" top="0" tabpos="9">
+		<Cursor position="20746" topLine="859" />
+	</File>
+	<File name="Constraints.h" open="0" top="0" tabpos="10">
+		<Cursor position="374" topLine="1" />
+	</File>
+	<File name="Cuerpo.c" open="1" top="0" tabpos="2">
+		<Cursor position="4346" topLine="182" />
+	</File>
+	<File name="Cuerpo.h" open="0" top="0" tabpos="15">
+		<Cursor position="1808" topLine="26" />
+	</File>
+	<File name="Espacio.c" open="0" top="0" tabpos="10">
+		<Cursor position="1042" topLine="0" />
+	</File>
+	<File name="Espacio.h" open="0" top="0" tabpos="10">
+		<Cursor position="544" topLine="4" />
+	</File>
+	<File name="Handlers.c" open="0" top="0" tabpos="12">
+		<Cursor position="4903" topLine="135" />
+	</File>
+	<File name="Handlers.h" open="0" top="0" tabpos="5">
+		<Cursor position="437" topLine="11" />
+	</File>
+	<File name="HeapSort.c" open="0" top="0" tabpos="0">
+		<Cursor position="676" topLine="24" />
+	</File>
+	<File name="LL.c" open="0" top="0" tabpos="9">
+		<Cursor position="53" topLine="0" />
+	</File>
+	<File name="LL.h" open="0" top="0" tabpos="3">
+		<Cursor position="433" topLine="0" />
+	</File>
+	<File name="Miscelanea.c" open="0" top="0" tabpos="14">
+		<Cursor position="355" topLine="1" />
+	</File>
+	<File name="Miscelanea.h" open="0" top="0" tabpos="2">
+		<Cursor position="71" topLine="0" />
+	</File>
+	<File name="agua.c" open="1" top="0" tabpos="8">
+		<Cursor position="7134" topLine="223" />
+	</File>
+	<File name="agua.h" open="0" top="0" tabpos="4">
+		<Cursor position="248" topLine="0" />
+	</File>
+	<File name="arbitros.c" open="0" top="0" tabpos="8">
+		<Cursor position="250" topLine="3" />
+	</File>
+	<File name="arbitros.h" open="0" top="0" tabpos="11">
+		<Cursor position="732" topLine="16" />
+	</File>
+	<File name="automGenTerr.c" open="1" top="0" tabpos="3">
+		<Cursor position="7436" topLine="238" />
+	</File>
+	<File name="automGenTerr.h" open="1" top="0" tabpos="4">
+		<Cursor position="826" topLine="0" />
+	</File>
+	<File name="constantes.h" open="0" top="0" tabpos="2">
+		<Cursor position="752" topLine="27" />
+	</File>
+	<File name="convexHull.c" open="0" top="0" tabpos="11">
+		<Cursor position="7111" topLine="192" />
+	</File>
+	<File name="convexHull.h" open="0" top="0" tabpos="8">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="estructuras.h" open="1" top="0" tabpos="7">
+		<Cursor position="1547" topLine="39" />
+	</File>
+	<File name="globales.h" open="1" top="0" tabpos="6">
+		<Cursor position="597" topLine="0" />
+	</File>
+	<File name="inl.h" open="0" top="0" tabpos="5">
+		<Cursor position="17" topLine="0" />
+	</File>
+	<File name="locales.h" open="1" top="0" tabpos="10">
+		<Cursor position="926" topLine="0" />
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="1">
+		<Cursor position="76508" topLine="2257" />
+	</File>
+</CodeBlocks_layout_file>

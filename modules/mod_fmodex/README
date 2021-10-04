@@ -1,0 +1,15 @@
+bennugd-module-fmodex
+=====================
+
+This library provides very simple bindings for FMOD Ex for the BennuGD
+media programming language.
+
+The source code for the binding itself is licensed under the terms of the
+MIT/X11 license (see COPYING for details) but FMOD Ex used a proprietary
+license and is not free to use unless you're using FMOD Ex for a free,
+non-commercial use. Please, see http://www.fmod.org/index.php/sales for
+their licensing terms.
+
+If you pay them, however, you're free to use this binding.
+
+FMOD Sound System', copyright © Firelight Technologies Pty, Ltd., 1994-2009.

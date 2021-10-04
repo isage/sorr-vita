@@ -1,0 +1,106 @@
+* Librería fsock (tcpsock) programada por Titonus y SplinterGU *
+
+- Funciones comunes:
+
+// Inicializa la librería para poder usar las funciones y devuelve 0 si no hubo error
+// Indicar numero de socketsets a utilizar, un valor de 0 creará 32 socketsets
+// Cada socketset solo puede tener hasta FD_SETSIZE sockets
+int fsock_init(int numerosocketsets); 
+
+// Cierra la librería y devuelve 0 si no hubo error
+int fsock_quit(); 
+
+// Obtiene el código de error específico de socket del sistema operativo
+// de la última función fsock que falló (normalmente devolvió -1)
+int fsock_geterror();
+
+// Establece si un socket debe bloquear (hasta completar con éxito o fracaso) las llamadas connect/send/recv
+// Esta función debe ser usada tras abrir el socket y antes de cualquier otra
+// POR DEFECTO TODOS LOS SOCKETS BLOQUEAN
+int fsock_setblock(int socket, int nobloqueante); 
+
+// Cierra un socket (TCP o UDP) y devuelve 0 en caso afirmativo
+int fsock_close(int socket); 
+
+// Asocia a un socket un puerto y devuelve 0 en caso afirmativo (solo Servidor)
+int fsock_bind(int socket, int puerto); 
+
+// Inicia o limpia el socketset indicado (tantos socketsets disponibles como indicados en init)
+void fsock_fdzero=fsock_socketset_free(int socketset); 
+
+// Añade un socket al socketset indicado y devuelve el nº de sockets en el socketset
+int fsock_fdset=fsock_socketset_add(int socketset, int socket); 
+
+// Elimina un socket del socketset indicado y devuelve el nº de sockets en el socketset
+int fsock_clr=fsock_socketset_del(int socketset, int socket); 
+
+// Devuelve si el socket está en el socketset o tiene el evento asociado (tras select)
+int fsock_fdisset(int socketset, int socket); 
+
+// Devuelve el número de sockets en total con actividad de los socketsets indicados hasta el tiempo dado
+//
+// El socketsetLectura comprobará los siguientes sucesos para los sockets:
+//	Tiene conexiones pendientes de aceptar (accept no bloqueará)
+//	Su conexión ha sido cerrada (el otro extremo cerró conexión o hubo error)
+//	Datos pendientes para leer (recv no bloqueará en principio)
+//
+// El socketsetEscritura comprobará los siguientes sucesos para los sockets:
+//	La conexión se ha establecido (connect tuvo éxito)
+//	Pueden enviarse datos (send no bloqueará en principio)
+//
+// El socketsetExcepcion comprobará los siguientes sucesos para los sockets:
+//	La conexión ha fallado o no fue aceptada (connect falló)
+//
+// Al menos un socketset válido como parámetro debe estar indicado, el resto
+// puede tener un valor -1
+//
+// *ESTE MÉTODO NO MODIFICA LA PRESENCIA DE LOS SOCKETS DE CADA SOCKETSET INDICADO
+// Y NO TIENE UTILIDAD PARA SABER QUE SOCKETS TUVIERON ACTIVIDAD CON LA LLAMADA FDISSET
+int fsock_socketset_check(int socketsetLectura, int socketsetEscritura, int socketsetExcepcion, int timeout); 
+
+// Igual que Check pero indicando (MODIFICANDO SocketSets) que Sockets tuvieron actividad o no,
+// pudiendose comprobar con llamadas FDISSET posteriores
+int fsock_select(int socketsetLectura, int socketsetEscritura, int socketsetExcepcion, int timeout); 
+
+// Devuelve la IP o Host de la máquina (0 Host, 1 IP)
+string fsock_get_iphost(int opcion); 
+
+// Devuelve la cadena IP que contiene el puntero ip devuelto por la funcion tcpsock_accept o udpsock_recv
+string fsock_get_ipstr(pointer ip); 
+
+- Funciones TCP:
+
+Se ha de establecer antes una conexión entre dos máquinas para usar las funciones de envío y recepción,
+usando las siguientes funciones más fsock_bind para poder recibir.
+
+// Crea y devuelve un nuevo socket TCP y devuelve -1 en caso negativo
+int tcpsock_open(); 
+
+// Fija el nº de peticiones de un socket asociado (solo Servidor)
+int tcpsock_listen(int socket, int peticiones);
+
+// Devuelve un nuevo socket correspondiente a una petición por parte de un cliente (solo Servidor), devuelve -1 si no hay petición
+int tcpsock_accept(int socket, pointer ip, pointer puerto); 
+
+// Conecta el socket especificado al servidor dado (ip y puerto) y devuelve 0 si fue correcto (solo Cliente)
+int tcpsock_connect(int socket, string ip, int puerto); 
+
+// Envía un puntero a través del socket dado y devuelve el nº de bytes enviados
+int tcpsock_send(int socket, pointer dato); 
+
+// Recibe un puntero de un determinado tamaño a través del socket dado y devuelve el nº de bytes recibidos
+int tcpsock_recv(int socket, pointer dato, tamaño); 
+
+- Funciones UDP:
+
+No es necesario establecer conexión entre dos máquinas pero para recibir mensajes es necesario usar
+la función fsock_bind más las siguientes funciones.
+
+// Crea y devuelve un nuevo socket UDP y devuelve -1 en caso negativo
+int udpsock_open(); 
+
+// Envía un puntero a través del socket dado y devuelve el nº de bytes enviados
+int udpsock_send(int socket, pointer dato, tamaño, string ip, int puerto); 
+
+// Recibe un puntero de un determinado tamaño a través del socket dado y devuelve el nº de bytes recibidos
+int udpsock_recv(int socket, pointer dato, tamaño, pointer ip, pointer puerto);

@@ -1,0 +1,173 @@
+import "mod_key";
+import "mod_joy";
+import "mod_proc";
+
+/* -------------------------------------------------------------------------- */
+
+const
+    _JKEY_UP        =  0 ;
+    _JKEY_UPLEFT    =  1 ;
+    _JKEY_LEFT      =  2 ;
+    _JKEY_DOWNLEFT  =  3 ;
+    _JKEY_DOWN      =  4 ;
+    _JKEY_DOWNRIGHT =  5 ;
+    _JKEY_RIGHT     =  6 ;
+    _JKEY_UPRIGHT   =  7 ;
+    _JKEY_MENU      =  8 ;
+    _JKEY_SELECT    =  9 ;
+    _JKEY_L         = 10 ;
+    _JKEY_R         = 11 ;
+    _JKEY_A         = 12 ;
+    _JKEY_B         = 13 ;
+    _JKEY_X         = 14 ;
+    _JKEY_Y         = 15 ;
+    _JKEY_VOLUP     = 16 ;
+    _JKEY_VOLDOWN   = 17 ;
+    _JKEY_CLICK     = 18 ;
+
+    _JKEY_LAST      = 19 ;
+
+end
+
+/* -------------------------------------------------------------------------- */
+
+#define jkeys_controler()    _jkeys_old_version=1;jkeys_init()
+
+/* -------------------------------------------------------------------------- */
+
+global
+    int _jkeys_exit = 0;
+    int _jkeys_old_version = 0;
+    int jkeys[_JKEY_LAST];
+    int jkeys_state[_JKEY_LAST];
+end
+
+/* -------------------------------------------------------------------------- */
+
+function jkeys_set_default_keys()
+begin
+    jkeys[ _JKEY_UP        ] = _UP ;
+    jkeys[ _JKEY_UPLEFT    ] = 0 ;
+    jkeys[ _JKEY_LEFT      ] = _LEFT ;
+    jkeys[ _JKEY_DOWNLEFT  ] = 0 ;
+    jkeys[ _JKEY_DOWN      ] = _DOWN ;
+    jkeys[ _JKEY_DOWNRIGHT ] = 0 ;
+    jkeys[ _JKEY_RIGHT     ] = _RIGHT ;
+    jkeys[ _JKEY_UPRIGHT   ] = 0 ;
+    jkeys[ _JKEY_MENU      ] = _ESC ;
+    jkeys[ _JKEY_SELECT    ] = _ENTER ;
+    jkeys[ _JKEY_L         ] = 0 ;
+    jkeys[ _JKEY_R         ] = 0 ;
+    jkeys[ _JKEY_A         ] = _A ;
+    jkeys[ _JKEY_B         ] = _D ;
+    jkeys[ _JKEY_X         ] = _S ;
+    jkeys[ _JKEY_Y         ] = _W ;
+    jkeys[ _JKEY_VOLUP     ] = 0 ;
+    jkeys[ _JKEY_VOLDOWN   ] = 0 ;
+    jkeys[ _JKEY_CLICK     ] = 0 ;
+
+end
+
+/* -------------------------------------------------------------------------- */
+
+process jkeys_init()
+private
+    i;
+#if 0
+    axis_x, axis_y;
+#endif
+begin
+    signal_action( s_kill, s_ign );
+    signal( type jkeys_init, s_kill );
+    signal_action( s_kill, s_dfl );
+
+    priority = 999999;
+
+    loop
+        for ( i = 0; i < _JKEY_LAST; i++ )
+            if ( jkeys[i] )
+                jkeys_state[i] = key( jkeys[i] );
+            else
+                jkeys_state[i] = 0;
+            end
+        end
+
+        switch ( os_id )
+            case    OS_GP2X_WIZ, OS_CAANOO: /* Wiz */
+                    jkeys_state[ _JKEY_UP        ] |= joy_getbutton( 0, _JKEY_UP        );
+                    jkeys_state[ _JKEY_UPLEFT    ] |= joy_getbutton( 0, _JKEY_UPLEFT    );
+                    jkeys_state[ _JKEY_LEFT      ] |= joy_getbutton( 0, _JKEY_LEFT      );
+                    jkeys_state[ _JKEY_DOWNLEFT  ] |= joy_getbutton( 0, _JKEY_DOWNLEFT  );
+                    jkeys_state[ _JKEY_DOWN      ] |= joy_getbutton( 0, _JKEY_DOWN      );
+                    jkeys_state[ _JKEY_DOWNRIGHT ] |= joy_getbutton( 0, _JKEY_DOWNRIGHT );
+                    jkeys_state[ _JKEY_RIGHT     ] |= joy_getbutton( 0, _JKEY_RIGHT     );
+                    jkeys_state[ _JKEY_UPRIGHT   ] |= joy_getbutton( 0, _JKEY_UPRIGHT   );
+                    jkeys_state[ _JKEY_MENU      ] |= joy_getbutton( 0, _JKEY_MENU      );
+                    jkeys_state[ _JKEY_SELECT    ] |= joy_getbutton( 0, _JKEY_SELECT    );
+                    jkeys_state[ _JKEY_L         ] |= joy_getbutton( 0, _JKEY_L         );
+                    jkeys_state[ _JKEY_R         ] |= joy_getbutton( 0, _JKEY_R         );
+                    jkeys_state[ _JKEY_A         ] |= joy_getbutton( 0, _JKEY_A         );
+                    jkeys_state[ _JKEY_B         ] |= joy_getbutton( 0, _JKEY_B         );
+                    jkeys_state[ _JKEY_X         ] |= joy_getbutton( 0, _JKEY_X         );
+                    jkeys_state[ _JKEY_Y         ] |= joy_getbutton( 0, _JKEY_Y         );
+                    jkeys_state[ _JKEY_VOLUP     ] |= joy_getbutton( 0, _JKEY_VOLUP     );
+                    jkeys_state[ _JKEY_VOLDOWN   ] |= joy_getbutton( 0, _JKEY_VOLDOWN   );
+                    jkeys_state[ _JKEY_CLICK     ] |= joy_getbutton( 0, _JKEY_CLICK     );
+
+                    jkeys_state[ _JKEY_UP        ] |= jkeys_state[ _JKEY_UPLEFT    ] | jkeys_state[ _JKEY_UPRIGHT   ] ;
+                    jkeys_state[ _JKEY_DOWN      ] |= jkeys_state[ _JKEY_DOWNRIGHT ] | jkeys_state[ _JKEY_DOWNLEFT  ] ;
+                    jkeys_state[ _JKEY_LEFT      ] |= jkeys_state[ _JKEY_UPLEFT    ] | jkeys_state[ _JKEY_DOWNLEFT  ] ;
+                    jkeys_state[ _JKEY_RIGHT     ] |= jkeys_state[ _JKEY_UPRIGHT   ] | jkeys_state[ _JKEY_DOWNRIGHT ] ;
+            end
+
+#if 0
+            case    OS_CAANOO: /* Caanoo */
+
+                    axis_x = joy_getaxis( 2, 0 );
+                    axis_y = joy_getaxis( 2, 1 );
+
+                    jkeys_state[ _JKEY_UP        ] |= ( axis_y < -16384 );
+                    jkeys_state[ _JKEY_UPLEFT    ] |= ( axis_y < -16384 ) && ( axis_x < -16384 );
+                    jkeys_state[ _JKEY_LEFT      ] |=                        ( axis_x < -16384 );
+                    jkeys_state[ _JKEY_DOWNLEFT  ] |= ( axis_y >  16384 ) && ( axis_x < -16384 );
+                    jkeys_state[ _JKEY_DOWN      ] |= ( axis_y >  16384 );
+                    jkeys_state[ _JKEY_DOWNRIGHT ] |= ( axis_y >  16384 ) && ( axis_x > 16384 );
+                    jkeys_state[ _JKEY_RIGHT     ] |=                        ( axis_x > 16384 );
+                    jkeys_state[ _JKEY_UPRIGHT   ] |= ( axis_y < -16384 ) && ( axis_x > 16384 );
+                    jkeys_state[ _JKEY_MENU      ] |= joy_getbutton( 0, _JKEY_MENU      );
+                    jkeys_state[ _JKEY_SELECT    ] |= joy_getbutton( 0, _JKEY_SELECT    );
+                    jkeys_state[ _JKEY_L         ] |= joy_getbutton( 0, _JKEY_L         );
+                    jkeys_state[ _JKEY_R         ] |= joy_getbutton( 0, _JKEY_R         );
+                    jkeys_state[ _JKEY_A         ] |= joy_getbutton( 0, _JKEY_A         );
+                    jkeys_state[ _JKEY_B         ] |= joy_getbutton( 0, _JKEY_B         );
+                    jkeys_state[ _JKEY_X         ] |= joy_getbutton( 0, _JKEY_X         );
+                    jkeys_state[ _JKEY_Y         ] |= joy_getbutton( 0, _JKEY_Y         );
+                    jkeys_state[ _JKEY_VOLUP     ] |= joy_getbutton( 0, _JKEY_VOLUP     );
+                    jkeys_state[ _JKEY_VOLDOWN   ] |= joy_getbutton( 0, _JKEY_VOLDOWN   );
+                    jkeys_state[ _JKEY_CLICK     ] |= joy_getbutton( 0, _JKEY_CLICK     );
+
+                    jkeys_state[ _JKEY_UP        ] |= jkeys_state[ _JKEY_UPLEFT    ] | jkeys_state[ _JKEY_UPRIGHT   ] ;
+                    jkeys_state[ _JKEY_DOWN      ] |= jkeys_state[ _JKEY_DOWNRIGHT ] | jkeys_state[ _JKEY_DOWNLEFT  ] ;
+                    jkeys_state[ _JKEY_LEFT      ] |= jkeys_state[ _JKEY_UPLEFT    ] | jkeys_state[ _JKEY_DOWNLEFT  ] ;
+                    jkeys_state[ _JKEY_RIGHT     ] |= jkeys_state[ _JKEY_UPRIGHT   ] | jkeys_state[ _JKEY_DOWNRIGHT ] ;
+            end
+#endif
+        end
+
+        frame;
+    end
+
+onexit:
+    if ( !_jkeys_exit && !_jkeys_old_version ) jkeys_init(); end
+
+end
+
+/* -------------------------------------------------------------------------- */
+
+function jkeys_exit()
+begin
+    _jkeys_exit = 1;
+    signal( type jkeys_init, s_kill );
+end
+
+/* -------------------------------------------------------------------------- */

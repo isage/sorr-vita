@@ -1,0 +1,14 @@
+Source: bennugd-module-theora
+Priority: optional
+Maintainer: Joseba García Etxebarria <joseba.gar@gmail.com>
+Build-Depends: debhelper (>= 7), bennugd-core-dev, bennugd-modules-dev, libtheora-dev, libvorbis-dev, libsdl-mixer1.2-dev, libsdl1.2-dev, pkg-config
+Standards-Version: 3.9.2
+Section: libs
+
+Package: bennugd-module-theora
+Section: libs
+Architecture: i386
+Depends: bennugd-core, bennugd-modules, libtheora0, libvorbis0a, libsdl-mixer1.2, libsdl1.2debian, ${shlibs:Depends}
+Description: BennuGD TheoraPlay wrapper module
+ This package is a Bennu module that will allow to you to play OGG/Theora
+ video files using BennuGD.

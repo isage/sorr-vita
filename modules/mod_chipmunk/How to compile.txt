@@ -1,0 +1,3 @@
+Antes de compilar libChipmunk define CP_USE_DOUBLES=0 tanto para la libchipmunk como para la mod_chipmunk, de lo contario los programas darán errores de memoria.
+
+Compila como siempre lo haz hecho. :)

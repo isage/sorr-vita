@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+# We run ldconfig so that the new directory configuration is found properly
+/sbin/ldconfig
+

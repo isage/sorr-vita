@@ -1,0 +1,25 @@
+bennugd-module-theora (0.1) quantal; urgency=low
+
+  * 16bpp support
+  * Video audio is now played, but at the wrong frequency
+  * Added new dependencies in SDL and SDL_mixer
+
+ -- Joseba García Etxebarria <joseba.gar@gmail.com>  Tue, 02 Apr 2013 19:34:23 +0200
+
+bennugd-module-theora (0.0.21) quantal; urgency=low
+
+  * More work on the build scripts
+
+ -- Joseba García Etxebarria <joseba.gar@gmail.com>  Wed, 27 Feb 2013 00:02:06 +0100
+
+bennugd-module-theora (0.0.2) quantal; urgency=low
+
+  * Work on the build script
+
+ -- Joseba García Etxebarria <joseba.gar@gmail.com>  Tue, 26 Feb 2013 21:11:42 +0100
+
+bennugd-module-theora (0.0.1) quantal; urgency=low
+
+  * Initial release
+
+ -- Joseba García Etxebarria <joseba.gar@gmail.com>  Mon, 25 Feb 2013 13:51:11 +0100
