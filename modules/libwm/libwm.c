@@ -88,6 +88,7 @@ DLVARFIXUP  __bgdexport( libwm, globals_fixup )[] =
 
 static void wm_events()
 {
+    return;
     SDL_Event e ;
     
     /* Procesa los eventos de ventana pendientes */

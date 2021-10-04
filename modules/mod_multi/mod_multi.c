@@ -83,6 +83,7 @@ int get_sdlfinger_index(SDL_FingerID finger) {
 
 /* Process SDL events looking for multitouch-related ones */
 void parse_input_events() {
+    return;
     int n=0;
     float x=0.0, y=0.0;
     double width=0, height=0;

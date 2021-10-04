@@ -417,6 +417,7 @@ void hotkey_add( int mod, int sym, HOTKEY_CALLBACK callback )
 
 static void process_key_events()
 {
+    return;
     SDL_Event e ;
     SDL_Keymod m ;
     int k, asc ;

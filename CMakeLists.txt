@@ -17,8 +17,8 @@ add_definitions("-Dmemcmp=sceClibMemcmp")
 add_definitions("-Dstrcmp=sceClibStrcmp")
 add_definitions("-Dstrncmp=sceClibStrncmp")
 add_definitions("-Dstrncpy=sceClibStrncpy")
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Ofast")
-#add_definitions("-ffast-math -ftree-vectorize -mfpu=neon")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Ofast")
+add_definitions("-ffast-math -ftree-vectorize -mfpu=neon")
 
 # Require tre
 add_subdirectory(3rdparty/tre)

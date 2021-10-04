@@ -84,6 +84,8 @@ int main( int argc, char *argv[] )
 #ifdef TARGET_VITA
   scePowerSetArmClockFrequency(444);
   scePowerSetGpuClockFrequency(222);
+  SDL_setenv("VITA_DISABLE_TOUCH_FRONT", "1");
+  SDL_setenv("VITA_DISABLE_TOUCH_BACK", "1");
 #endif
 
     char * filename = NULL, dcbname[ __MAX_PATH ], *ptr ;
