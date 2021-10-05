@@ -38,13 +38,14 @@ static void  dump_new_events()
     /* We can't return -1, just return 0 (no event) on error */
     // We'll only discard events that no module knows how to handle here...
     // Otherwise some events seem to get discarded
-    SDL_FlushEvents(SDL_SYSWMEVENT, SDL_SYSWMEVENT);
-    SDL_FlushEvents(SDL_TEXTEDITING, SDL_TEXTINPUT);
-    SDL_FlushEvents(SDL_JOYDEVICEADDED, SDL_CONTROLLERDEVICEREMAPPED);
-    SDL_FlushEvents(SDL_DOLLARGESTURE, SDL_LASTEVENT);
+//    SDL_FlushEvents(SDL_SYSWMEVENT, SDL_SYSWMEVENT);
+//    SDL_FlushEvents(SDL_TEXTEDITING, SDL_TEXTINPUT);
+//    SDL_FlushEvents(SDL_JOYDEVICEADDED, SDL_CONTROLLERDEVICEREMAPPED);
+//    SDL_FlushEvents(SDL_DOLLARGESTURE, SDL_LASTEVENT);
 
     /* Get new events */
-    SDL_PumpEvents();
+//    SDL_PumpEvents();
+    SDL_JoystickUpdate();
 }
 
 /* ----------------------------------------------------------------- */
