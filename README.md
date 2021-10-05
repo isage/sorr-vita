@@ -15,7 +15,7 @@ Run `prepare.sh`, this should remove unused files and unpack data file.
 Copy contents of `data/` to `ux0:/data/sorr/`.  
 Install and run VPK.  
 
-**[For Windows]**
+**[For Windows]**  
 You can download VPK-package from the [releases](https://github.com/isage/sorr-vita/releases) section.  
 Install python3.   
 Obtain SoRR 5.2 data and copy it into `data` directory in this repository.  
