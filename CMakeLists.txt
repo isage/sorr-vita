@@ -174,7 +174,7 @@ target_include_directories(bgdrtm PRIVATE
                     ${VORBIS_INCLUDE_DIR}
                     ${TRE_INCLUDE_DIR}
                     ${PNG_INCLUDE_DIR}
-					${CMAKE_SOURCE_DIR}/3rdparty/tre/lib)
+                    ${CMAKE_SOURCE_DIR}/3rdparty/tre/lib)
 
 
 # Source files
