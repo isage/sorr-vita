@@ -168,13 +168,13 @@ target_include_directories(bgdrtm PRIVATE
                     ${CMAKE_SOURCE_DIR}/modules/mod_multi/
                     ${CMAKE_SOURCE_DIR}/modules/mod_chipmunk/
                     ${CMAKE_SOURCE_DIR}/modules/mod_iap/
-
                     ${SDL2_INCLUDE_DIR}
                     ${SDL2_MIXER_INCLUDE_DIRS}
                     ${ZLIB_INCLUDE_DIRS}
                     ${VORBIS_INCLUDE_DIR}
                     ${TRE_INCLUDE_DIR}
-                    ${PNG_INCLUDE_DIR})
+                    ${PNG_INCLUDE_DIR}
+                    ${CMAKE_SOURCE_DIR}/3rdparty/tre/lib)
 
 
 # Source files
