@@ -267,7 +267,7 @@ static int load_song( const char * filename )
         return( 0 );
     }
 
-    if ( !( h->hnd = ( void * ) Mix_LoadMUS_RW( h->rwops ) ) )
+    if ( !( h->hnd = ( void * ) Mix_LoadMUS_RW( h->rwops, 1 ) ) )
     {
         file_close( fp );
         sound_handle_free( h );
@@ -1700,6 +1700,6 @@ void __bgdexport( mod_sound, module_finalize )()
 /* exports                                                           */
 /* ----------------------------------------------------------------- */
 
-#include "mod_sound_exports.h"
+#include "mod_sound_symbols.h"
 
 /* ----------------------------------------------------------------- */
