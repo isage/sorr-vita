@@ -91,7 +91,7 @@ static const char * cur_path = "ux0:/data/sorr/";
 
 char * dir_current( void )
 {
-    printf("dir current\n");
+//    printf("dir current\n");
     return cur_path;
 //    return ( getcwd( NULL, 0 ) ) ;
 }
@@ -113,7 +113,7 @@ char * dir_current( void )
 
 int dir_change( const char * dir )
 {
-    printf("dir change: %s\n", dir);
+//    printf("dir change: %s\n", dir);
     return -1;
 /*    char *c = dir_path_convert( dir ) ;
     if ( !c ) return 0;
@@ -141,7 +141,7 @@ int dir_create( const char * dir )
 {
     char *c = dir_path_convert( dir ) ;
     if ( !c ) return 0;
-    char *path[256];
+    char path[256];
     sprintf(path, "ux0:/data/sorr/%s", c);
 #ifdef WIN32
     int r = mkdir( c ) ;
@@ -171,7 +171,7 @@ int dir_delete( const char * dir )
 {
     char *c = dir_path_convert( dir ) ;
     if ( !c ) return 0;
-    char *path[256];
+    char path[256];
     sprintf(path, "ux0:/data/sorr/%s", c);
 #ifdef TARGET_WII
     int r = remove( c );
@@ -201,7 +201,7 @@ int dir_deletefile( const char * filename )
 {
     char *c = dir_path_convert( filename ) ;
     if ( !c ) return 0;
-    char *path[256];
+    char path[256];
     sprintf(path, "ux0:/data/sorr/%s", c);
     int r = unlink( path ) ;
     free( c ) ;
@@ -212,7 +212,7 @@ int dir_deletefile( const char * filename )
 
 __DIR_ST * dir_open( const char * path )
 {
-    printf("dir open\n");
+//    printf("dir open\n");
     __DIR_ST * hDir = malloc( sizeof( __DIR_ST ) );
     if ( !hDir ) return NULL;
 
@@ -302,7 +302,7 @@ __DIR_ST * dir_open( const char * path )
 
 void dir_close ( __DIR_ST * hDir )
 {
-    printf("dir close\n");
+//    printf("dir close\n");
 
     free ( hDir->path );
 
@@ -320,7 +320,7 @@ void dir_close ( __DIR_ST * hDir )
 
 __DIR_FILEINFO_ST * dir_read( __DIR_ST * hDir )
 {
-    printf("dir read\n");
+//    printf("dir read\n");
     return NULL;
 #if 0
     char realpath[__MAX_PATH];
