@@ -259,19 +259,18 @@ static int load_song( const char * filename )
     Mix_Music *music = NULL;
     file      *fp;
 
-//    SDL_Log("Trying to load %s", filename);
-
     if ( !audio_initialized && sound_init() ) return ( 0 );
 
     if ( !( fp = file_open( filename, "rb0" ) ) ) return ( 0 );
 
-    if ( !( music = Mix_LoadMUS_RW( SDL_RWFromBGDFP( fp ), 1 ) ) )
-    {
+    SDL_RWops * rwops = SDL_RWFromBGDFP( fp );
+    if ( !rwops ) {
         file_close( fp );
-        fprintf( stderr, "Couldn't load %s: %s\n", filename, SDL_GetError() );
         return( 0 );
     }
-//    SDL_Log("Loaded successfully");
+
+    // Don't need free rwops, SDL will do
+    if ( !( music = Mix_LoadMUS_RW( rwops, 1 ) ) ) return ( 0 );
 
     return (( int )music );
 }
@@ -522,12 +521,15 @@ static int load_wav( const char * filename )
 
     if ( !( fp = file_open( filename, "rb0" ) ) ) return ( 0 );
 
-    if ( !( music = Mix_LoadWAV_RW( SDL_RWFromBGDFP( fp ), 1 ) ) )
-    {
+    SDL_RWops * rwops = SDL_RWFromBGDFP( fp );
+    if ( !rwops ) {
         file_close( fp );
-        fprintf( stderr, "Couldn't load %s: %s\n", filename, SDL_GetError() );
         return( 0 );
     }
+
+    // Don't need free rwops, SDL will do
+    if ( !( music = Mix_LoadWAV_RW( rwops, 1 ) ) ) return ( 0 );
+
     return (( int )music );
 }
 
